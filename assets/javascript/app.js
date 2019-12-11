@@ -74,13 +74,11 @@ $(document).ready(function() {
     }
   }
 
-  //timer stop
   function stop() {
     running = false;
     clearInterval(intervalId);
   }
   function displayQuestion() {
-    //generate random index in array
     index = Math.floor(Math.random() * options.length);
     pick = options[index];
 
@@ -95,10 +93,8 @@ $(document).ready(function() {
     }
 
     $(".answerchoice").on("click", function() {
-      //grab array position from userGuess
       userGuess = parseInt($(this).attr("data-guessvalue"));
 
-      //correct guess or wrong guess outcomes
       if (userGuess === pick.answer) {
         stop();
         correctCount++;
@@ -128,7 +124,6 @@ $(document).ready(function() {
       $("#answerblock").empty();
       timer = 20;
 
-      //run the score screen if all questions answered
       if (wrongCount + correctCount + unanswerCount === qCount) {
         $("#questionblock").empty();
         $("#questionblock").html("<h3>Game Over!  Here's how you did: </h3>");
